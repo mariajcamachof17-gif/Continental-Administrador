@@ -232,11 +232,11 @@ function addRow() {
   tr.id = `row-${rowCount}`;
   tr.innerHTML = `
     <td style="color:var(--text3);font-weight:700;font-size:13px;padding-left:16px">${rowCount}</td>
-    <td><input class="cell-input" type="text" placeholder="Ej. 22363559" onchange="updateSummary()"/></td>
-    <td><input class="cell-input" type="text" placeholder="Ej. Coca-Cola Zero Azúcar" style="min-width:220px" onchange="updateSummary()"/></td>
-    <td><input class="cell-input cell-num" type="number" placeholder="1" min="1" oninput="updateSummary()"/></td>
+    <td><input class="cell-input" type="text" id="cell-sku-${rowCount}" placeholder="Ej. 22363559" onchange="updateSummary()"/></td>
+    <td><input class="cell-input" type="text" id="cell-nombre-${rowCount}" placeholder="Ej. Coca-Cola Zero Azúcar" style="min-width:220px" onchange="updateSummary()"/></td>
+    <td><input class="cell-input cell-num" type="number" id="cell-cantidad-${rowCount}" placeholder="1" min="1" oninput="updateSummary()"/></td>
     <td>
-      <select class="cell-select" onchange="updateSummary()">
+      <select class="cell-select" id="cell-estado-${rowCount}" onchange="updateSummary()">
         <option value="Registrado">Registrado</option>
         <option value="Entregado">Entregado</option>
         <option value="Pendiente">Pendiente</option>
@@ -361,7 +361,7 @@ function renderOrders() {
       </div>
       <div class="order-group-body">
         <table class="mini-table">
-          <thead><tr><th>SKU</th><th>Producto</th><th>Cantidad</th><th>Estado</th></tr></thead>
+          <thead><tr><th>ID Línea</th><th>Producto</th><th>Cantidad</th><th>Estado</th></tr></thead>
           <tbody>
             ${o.productos.map(p=>{
               const sc = p.estado==='Entregado'?'entregado':p.estado==='Pendiente'?'pendiente':'registrado';
