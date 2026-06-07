@@ -28,7 +28,7 @@ app.post('/registrar', async (req, res) => {
       'Sucursal':  orden.sucursal   || '',
       'Direccion': orden.direccion  || '',
       'CP':        orden.cp         || '',
-      'ID de Linea':       p.idLinea        || '',
+      'ID de Linea': String(p.idLinea || ''),
       'SKU':       p.sku        || '',
       'Producto':  p.producto       || '',
       'Cantidad':  String(p.cantidad || '0'),
